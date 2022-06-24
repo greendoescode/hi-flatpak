@@ -44,6 +44,19 @@ jobs:
       - name: Get tauri submodule commit
         run: cd submodules/tauri; echo "TAURI_SUBMODULE_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
+      - name: Cache bundler dependencies
+        uses: actions/cache@v3
+        env:
+          cache-name: bundler_deps
+        with:
+          path: ~/.cache/tauri
+          key: ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('**/Cargo.toml', '**/package.json', '**/tauri.conf.json') }}-${{ env.CURRENT_DATE }}
+          restore-keys: |
+            ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('**/Cargo.toml', '**/package.json', '**/tauri.conf.json') }}-
+            ${{ matrix.platform }}-stable-${{ env.cache-name }}-
+            ${{ matrix.platform }}-stable-
+            ${{ matrix.platform }}-
+
       - name: Cache cargo state
         uses: actions/cache@v3
         env:
