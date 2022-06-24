@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "setup-cli": "cargo install --path submodules/tauri/tooling/cli",
+    "setup-cli": "cargo install --force --path submodules/tauri/tooling/cli",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
