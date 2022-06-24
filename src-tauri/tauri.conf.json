@@ -44,7 +44,7 @@
       },
       "resources": [],
       "shortDescription": "",
-      "targets": "flatpak",
+      "targets": ["deb", "flatpak"],
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
