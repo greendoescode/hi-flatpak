@@ -40,9 +40,11 @@ jobs:
       - name: Get current date
         if: matrix.platform == 'windows-latest'
         run: echo "CURRENT_DATE=$(Get-Date -Format "yyyy-MM-dd")" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+      
+      - name: Get tauri submodule commit
+        run: cd submodules/tauri; echo "TAURI_SUBMODULE_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       - name: Cache cargo state
-        id: cargo-state-cache
         uses: actions/cache@v3
         env:
           cache-name: cargo_state
@@ -73,8 +75,17 @@ jobs:
             ${{ matrix.platform }}-stable-
             ${{ matrix.platform }}-
 
+      - name: Cache cargo-tauri
+        id: cargo-tauri-cache
+        uses: actions/cache@v3
+        env:
+          cache-name: cargo_cargo-tauri
+        with:
+          path: ~/.cargo/bin/cargo-tauri
+          key: ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ env.TAURI_SUBMODULE_COMMIT }}
+
       - name: install local tauri-cli
-        if: steps.cargo-state-cache.outputs.cache-hit != 'true'
+        if: steps.cargo-tauri-cache.outputs.cache-hit != 'true'
         run: yarn setup-cli
 
       - name: install app dependencies and build it
