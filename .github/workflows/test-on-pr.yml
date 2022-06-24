@@ -49,7 +49,9 @@ jobs:
         env:
           cache-name: bundler_deps
         with:
-          path: ~/.cache/tauri
+          path: |
+            ~/.cache/tauri
+            ~/.local/share/flatpak
           key: ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('**/Cargo.toml', '**/package.json', '**/tauri.conf.json') }}-${{ env.CURRENT_DATE }}
           restore-keys: |
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('**/Cargo.toml', '**/package.json', '**/tauri.conf.json') }}-
