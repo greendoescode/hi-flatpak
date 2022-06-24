@@ -82,4 +82,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tauriScript: cargo tauri
-          args: --verbose --bundles deb
+          args: --verbose
