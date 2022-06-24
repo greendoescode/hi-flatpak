@@ -105,3 +105,8 @@ jobs:
           releaseBody: "See the assets to download this version and install."
           releaseDraft: true
           prerelease: false
+
+      - name: show flatpak output
+        run: |
+          ls -la src-tauri/target/release/bundle/flatpak
+          cat src-tauri/target/release/bundle/flatpak/local/*.json

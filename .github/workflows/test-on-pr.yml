@@ -97,3 +97,8 @@ jobs:
         with:
           tauriScript: cargo tauri
           args: --verbose
+
+      - name: show flatpak output
+        run: |
+          ls -la src-tauri/target/release/bundle/flatpak
+          cat src-tauri/target/release/bundle/flatpak/local/*.json
