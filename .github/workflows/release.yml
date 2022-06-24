@@ -85,6 +85,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tauriScript: cargo tauri
+          args: --verbose --bundles none
           tagName: hi-flatpak-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
           releaseName: "Hello Flatpak v__VERSION__"
           releaseBody: "See the assets to download this version and install."
