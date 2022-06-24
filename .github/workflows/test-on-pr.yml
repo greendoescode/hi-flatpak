@@ -69,7 +69,10 @@ jobs:
           # Restore from outdated cache for speed
           restore-keys: |
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('src-tauri/Cargo.lock') }}
-            ${{ matrix.platform }}-stable-${{ env.cache-name }>
+            ${{ matrix.platform }}-stable-${{ env.cache-name }}-
+            ${{ matrix.platform }}-stable-
+            ${{ matrix.platform }}-
+
       - name: install local tauri-cli
         if: steps.cargo-state-cache.outputs.cache-hit != 'true'
         run: yarn setup-cli
