@@ -32,10 +32,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf flatpak flatpak-builder
+          flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
           flatpak --version
           flatpak-builder --version
-          flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          flatpak install --user --assumeyes --noninteractive --runtime flathub org.gnome.Platform//42 org.gnome.Sdk//42
 
       - name: Get current date
         run: echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
