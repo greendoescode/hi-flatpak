@@ -3,17 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "setup-cli": "cargo install --path submodules/tauri/tooling/cli",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "tauri": "tauri"
+    "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
-    "@tauri-apps/cli": "^1.0.0",
     "@tsconfig/svelte": "^2.0.0",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",

@@ -1,0 +1,4 @@
+[submodule "submodules/tauri"]
+	path = submodules/tauri
+	url = https://github.com/Beanow/tauri.git
+	branch = feat/bundler/flatpak

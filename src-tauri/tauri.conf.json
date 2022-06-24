@@ -1,5 +1,5 @@
 {
-  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+  "$schema": "../submodules/tauri/tooling/cli/schema.json",
   "build": {
     "beforeBuildCommand": "yarn build",
     "beforeDevCommand": "yarn dev",
@@ -22,6 +22,10 @@
         "depends": []
       },
       "externalBin": [],
+      "flatpak": {
+        "useNodeCli": false,
+        "tauriCliVersion": "--path submodules/tauri/tooling/cli"
+      },
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -29,7 +33,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.github.beanow.hi-flatpak",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -40,7 +44,7 @@
       },
       "resources": [],
       "shortDescription": "",
-      "targets": "all",
+      "targets": "flatpak",
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
