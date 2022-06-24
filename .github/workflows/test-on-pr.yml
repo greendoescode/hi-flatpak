@@ -44,17 +44,16 @@ jobs:
       - name: Get tauri submodule commit
         run: cd submodules/tauri; echo "TAURI_SUBMODULE_COMMIT=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
-      - name: Cache bundler dependencies
+      - name: Cache flatpak runtimes
         uses: actions/cache@v3
         env:
-          cache-name: bundler_deps
+          cache-name: flatpak_dir
         with:
           path: |
-            ~/.cache/tauri
             ~/.local/share/flatpak
-          key: ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('**/Cargo.toml', '**/package.json', '**/tauri.conf.json') }}-${{ env.CURRENT_DATE }}
+          key: ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('**/tauri.conf.json') }}-${{ env.CURRENT_DATE }}
           restore-keys: |
-            ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('**/Cargo.toml', '**/package.json', '**/tauri.conf.json') }}-
+            ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('**/tauri.conf.json') }}-
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-
 
       - name: Cache cargo state
@@ -78,10 +77,11 @@ jobs:
         with:
           path: src-tauri/target
           # Add date to the cache to keep it up to date
-          key: ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('src-tauri/Cargo.lock') }}-${{ env.CURRENT_DATE }}
+          key: ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('src-tauri/Cargo.lock', '**/tauri.conf.json') }}-${{ env.CURRENT_DATE }}-${{ env.TAURI_SUBMODULE_COMMIT }}
           # Restore from outdated cache for speed
           restore-keys: |
-            ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('src-tauri/Cargo.lock') }}
+            ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('src-tauri/Cargo.lock', '**/tauri.conf.json') }}-${{ env.CURRENT_DATE }}-
+            ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('src-tauri/Cargo.lock', '**/tauri.conf.json') }}-
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-
 
       - name: Cache cargo-tauri
