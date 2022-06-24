@@ -56,8 +56,6 @@ jobs:
           restore-keys: |
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('**/Cargo.toml', '**/package.json', '**/tauri.conf.json') }}-
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-
-            ${{ matrix.platform }}-stable-
-            ${{ matrix.platform }}-
 
       - name: Cache cargo state
         uses: actions/cache@v3
@@ -72,8 +70,6 @@ jobs:
           restore-keys: |
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('**/Cargo.toml') }}-
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-
-            ${{ matrix.platform }}-stable-
-            ${{ matrix.platform }}-
 
       - name: Cache cargo target
         uses: actions/cache@v3
@@ -87,8 +83,6 @@ jobs:
           restore-keys: |
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-${{ hashFiles('src-tauri/Cargo.lock') }}
             ${{ matrix.platform }}-stable-${{ env.cache-name }}-
-            ${{ matrix.platform }}-stable-
-            ${{ matrix.platform }}-
 
       - name: Cache cargo-tauri
         id: cargo-tauri-cache
