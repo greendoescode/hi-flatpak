@@ -1,8 +1,12 @@
 # Hello Flatpak
 
+[![publish](https://github.com/Beanow/hi-flatpak/actions/workflows/release.yml/badge.svg)](https://github.com/Beanow/hi-flatpak/actions/workflows/release.yml)
+
 _Will you bring us the future?_
 
 Experimenting with flatpak bundling for [Tauri](https://tauri.app/).
+
+![screenshot](./screenshot.png)
 
 ### Notes
 
