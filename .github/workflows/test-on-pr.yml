@@ -100,7 +100,7 @@ jobs:
       - name: install app dependencies and build it
         run: yarn && yarn build
 
-      - uses: tauri-apps/tauri-action@v0
+      - uses: beanow/tauri-action@dev
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
