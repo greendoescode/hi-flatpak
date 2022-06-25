@@ -1,6 +1,6 @@
 {
   "name": "hi-flatpak",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "setup-cli": "cargo install --force --path submodules/tauri/tooling/cli",
