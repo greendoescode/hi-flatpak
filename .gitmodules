@@ -2,3 +2,7 @@
 	path = submodules/tauri
 	url = https://github.com/Beanow/tauri.git
 	branch = feat/bundler/flatpak
+[submodule "submodules/libappindicator-rs"]
+	path = submodules/libappindicator-rs
+	url = https://github.com/Beanow/libappindicator-rs.git
+	branch = feat/portable-example

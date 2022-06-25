@@ -5,6 +5,9 @@
   "scripts": {
     "setup-cli": "cargo install --force --path submodules/tauri/tooling/cli",
     "build": "rollup -c",
+    "postflatpak": "yarn example:hello-appindicator:build && yarn example:hello-appindicator:install",
+    "example:hello-appindicator:build": "cargo build --example=hello --manifest-path=submodules/libappindicator-rs/Cargo.toml",
+    "example:hello-appindicator:install": "install -Dm755 submodules/libappindicator-rs/target/debug/examples/hello /app/bin/hello-appindicator",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
     "check": "svelte-check --tsconfig ./tsconfig.json",
