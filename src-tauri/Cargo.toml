@@ -29,4 +29,4 @@ custom-protocol = ["tauri/custom-protocol"]
 
 [patch.crates-io]
 libappindicator-sys = { git = "https://github.com/Beanow/libappindicator-rs.git", branch = "fix/linker" }
-tao = { git = "https://github.com/Beanow/tao.git", branch = "fix/linux-xdg-runtime" }
+tao = { git = "https://github.com/Beanow/tao.git", branch = "feat/flatpak-icon-dir" }
